@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H3MittausData"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" FontSize="18">
+        Title="MainWindow" Height="350" Width="1000" FontSize="18">
     <Grid>
         <TabControl x:Name="tabControl" 
                     HorizontalAlignment="Stretch" 
@@ -17,9 +17,17 @@
                             <TextBlock Text="Tänään on:"/>
                             <TextBlock x:Name="txtToday"/>
                             <TextBlock Text="Tiedostonimi:" Margin="10,0,0,0"/>
-                            <TextBox x:Name="txtFileName" Text="d:\temp\testi.txt"/>
+                            <TextBox x:Name="txtFileName" Text="d:\H8897\testi.txt"/>
                             <Button x:Name="btnSave" Content="Tallenna" Click="btnSave_Click"/>
                             <Button x:Name="btnRead" Content="Hae tiedot" Click="btnRead_Click"/>
+                            
+                            <TextBlock Text="XML"/>
+                            <Button x:Name="btnSerialize" Content="Serialisoi" Click="btnSerialize_Click"/>
+                            <Button x:Name="btnDeSerialize" Content="Deserialisoi" Click="btnDeSerialize_Click"/>
+
+                            <TextBlock Text="Bin"/>
+                            <Button x:Name="btnSerializeBin" Content="SerialisoiBin" Click="btnSerializeBin_Click" />
+                            <Button x:Name="btnDeSerializeBin" Content="DeserialisoiBin" Click="btnDeSerializeBin_Click"/>
 
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
