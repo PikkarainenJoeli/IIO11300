@@ -21,6 +21,8 @@ namespace H3MittausData
   /// </summary>
   public partial class MainWindow : Window
   {
+        //luodaanlista mittaus-oliota varten
+        List<MittausData> mitatut;
     public MainWindow()
     {
       InitializeComponent();
@@ -30,13 +32,50 @@ namespace H3MittausData
     {
       //omat ikkunaan liittyvät alustukset
       txtToday.Text = DateTime.Today.ToShortDateString();
+            mitatut = new List<MittausData>();
     }
 
     private void btnSaveData_Click(object sender, RoutedEventArgs e)
     {
       //luodaan uusi mittausdata olio ja näytetään se käyttäjälle
       MittausData md = new MittausData(txtClock.Text, txtData.Text);
-      lbData.Items.Add(md);
+            //lbData.Items.Add(md); testausta varten
+            mitatut.Add(md);
+            ApplyChanges();
     }
-  }
+        private void ApplyChanges()
+        {
+            lbData.ItemsSource = null;
+            lbData.ItemsSource = mitatut;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MittausData.SaveToFile(txtFileName.Text, mitatut);
+                MessageBox.Show("Tiedot tallennettu onnistuneesti " + txtFileName.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnRead_Click(object sender, RoutedEventArgs e)
+        {
+            //haetaan käyttäjän antamasta tiedostosta mitatut arvot
+            try
+            {
+                mitatut = MittausData.ReadFromFile(txtFileName.Text);
+                ApplyChanges();
+                MessageBox.Show("Tiedot haettu onnistuneesti tiedostosta" + txtFileName.Text);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+    }
 }

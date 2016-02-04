@@ -18,6 +18,9 @@
                             <TextBlock x:Name="txtToday"/>
                             <TextBlock Text="Tiedostonimi:" Margin="10,0,0,0"/>
                             <TextBox x:Name="txtFileName" Text="d:\temp\testi.txt"/>
+                            <Button x:Name="btnSave" Content="Tallenna" Click="btnSave_Click"/>
+                            <Button x:Name="btnRead" Content="Hae tiedot" Click="btnRead_Click"/>
+
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="klo:" />
